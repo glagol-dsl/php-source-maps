@@ -1,0 +1,9 @@
+{
+  "mappings": "AAAA;AAAA;;AAAU;;;;AAEV;;;;;IAEI,QAAA,MAAsB;;;;eAEd,IAAI,MAAM,EAAE",
+  "names": [],
+  "file": "Example/UserController.php",
+  "version": 3.0,
+  "sources": [
+    "/src/Example/UserController.g"
+  ]
+}

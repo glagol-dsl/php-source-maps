@@ -10,11 +10,10 @@ class Base64VLQ
     private const VLQ_BASE_MASK = self::VLQ_BASE - 1;
     private const VLQ_CONTINUATION_BIT = self::VLQ_BASE;
 
-    public static function decode(string $in): int
+    public static function decode(string $in, &$stringPosition = 0): int
     {
         $result = 0;
         $shift = 0;
-        $stringPosition = 0;
 
         do {
             $c = $in[$stringPosition];
