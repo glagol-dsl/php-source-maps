@@ -33,7 +33,7 @@ function mappings_parse(string $encodedMappings, array $sources, ?array $names =
             $originalSource = null;
             $originalLine = null;
             $originalColumn = null;
-            $originalName = null;
+            $name = null;
 
             if ($pos < $end && !($str[$pos] == ',' || $str[$pos] == ';')) {
                 // Original source.
@@ -51,12 +51,12 @@ function mappings_parse(string $encodedMappings, array $sources, ?array $names =
                 $previousOriginalColumn = $originalColumn = $previousOriginalColumn + Base64VLQ::decode($str, $pos);
                 if ($pos < $end && !($str[$pos] == ',' || $str[$pos] == ';')) {
                     // Original name.
-                    $originalName = array_get($names, $previousName += Base64VLQ::decode($str, $pos));
+                    $name = array_get($names, $previousName += Base64VLQ::decode($str, $pos));
                 }
             }
 
             $mappings[] = new Mapping(
-                $generatedLine, $generatedColumn, $originalSource, $originalLine, $originalColumn, $originalName);
+                $generatedLine, $generatedColumn, $originalSource, $originalLine, $originalColumn, $name);
         }
     }
 

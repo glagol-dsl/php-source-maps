@@ -11,7 +11,11 @@
     }
   ],
   "autoload": {
-    "psr-4": {"Glagol\\SourceMap\\": "src/"}
+    "psr-4": {"Glagol\\SourceMap\\": "src/"},
+    "files": [
+      "src/mappings_parse.php",
+      "src/sourcemap_helpers.php"
+    ]
   },
   "autoload-dev": {
     "psr-4": {"GlagolTest\\SourceMap\\": "test/"}

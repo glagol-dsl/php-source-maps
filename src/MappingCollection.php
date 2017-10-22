@@ -10,9 +10,17 @@ use Illuminate\Support\Collection;
  */
 class MappingCollection extends Collection
 {
-    public function findByGeneratedLine(int $line): MappingCollection {
+    public function filterByGeneratedLine(int $line): self
+    {
         return $this->filter(function (Mapping $mapping) use ($line) {
-            return $mapping->generatedLineEquals($line);
+            return $mapping->isGeneratedLineEqualTo($line);
+        });
+    }
+
+    public function filterByName(string $name): self
+    {
+        return $this->filter(function (Mapping $mapping) use ($name) {
+            return $mapping->isNameEqualTo($name);
         });
     }
 }
