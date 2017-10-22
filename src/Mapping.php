@@ -64,4 +64,19 @@ class Mapping
     {
         return $line === $this->generatedLine;
     }
+
+    public function getOriginalSource(): File
+    {
+        return $this->originalSource;
+    }
+
+    public function getOriginalLine(): int
+    {
+        return $this->originalLine;
+    }
+
+    public function getOriginalColumn(): int
+    {
+        return $this->originalColumn;
+    }
 }
