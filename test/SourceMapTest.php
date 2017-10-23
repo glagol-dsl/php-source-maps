@@ -37,8 +37,6 @@ class SourceMapTest extends TestCase
         $expectedSource = new File('/src/Example/UserController.g');
 
         $sourceMap = new SourceMap(
-            [$expectedSource],
-            [],
             new File('Example/UserController.php'),
             new MappingCollection([
                 new Mapping(1, 0, $expectedSource, 1, 0),

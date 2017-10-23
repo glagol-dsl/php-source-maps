@@ -7,16 +7,6 @@ namespace Glagol\SourceMap;
 class SourceMap
 {
     /**
-     * @var array|File[]
-     */
-    private $sources;
-
-    /**
-     * @var array|string[]
-     */
-    private $names;
-
-    /**
      * @var File
      */
     private $file;
@@ -33,20 +23,24 @@ class SourceMap
 
     /**
      * SourceMap constructor.
-     * @param File[] $sources
-     * @param string[] $names
+     *
      * @param File $file
      * @param MappingCollection|Mapping[] $mappings
      * @param int $version
      */
-    public function __construct(
-        array $sources, array $names, File $file, MappingCollection $mappings, int $version = 3)
+    public function __construct(File $file, MappingCollection $mappings, int $version = 3)
     {
-        $this->sources = $sources;
-        $this->names = $names;
         $this->file = $file;
         $this->mappings = $mappings;
         $this->version = $version;
+    }
+
+    /**
+     * @return MappingCollection|Mapping[]
+     */
+    public function mappings(): MappingCollection
+    {
+        return $this->mappings;
     }
 
     /**
@@ -68,7 +62,7 @@ class SourceMap
 
         $version = (int) array_get($map, 'version', 3);
 
-        return new self($sources, $names, $file, $mappings, $version);
+        return new self($file, $mappings, $version);
     }
 
     /**
