@@ -14,7 +14,7 @@
     "psr-4": {"Glagol\\SourceMap\\": "src/"},
     "files": [
       "src/mappings_parse.php",
-      "src/sourcemap_helpers.php"
+      "src/sourcemap_loading.php"
     ]
   },
   "autoload-dev": {

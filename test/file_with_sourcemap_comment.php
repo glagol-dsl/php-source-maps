@@ -1,2 +1,2 @@
 <?php
-//# sourceMappingURL=source_maps/Example/UserController.php.map
+//# sourceMappingURL=test_source.map

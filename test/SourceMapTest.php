@@ -16,7 +16,7 @@ class SourceMapTest extends TestCase
 {
     public function testShouldParseAFileSourceMap()
     {
-        $actualSourceMap = (new SourceMapFile(__DIR__ . '/test_source_map.json'))->sourceMap();
+        $actualSourceMap = (new SourceMapFile(__DIR__ . '/test_source.map'))->sourceMap();
 
         $sourceMap = $this->expectedSourceMap();
 
@@ -28,7 +28,7 @@ class SourceMapTest extends TestCase
      */
     private function expectedSourceMap(): SourceMap
     {
-        $expectedSource = new OriginalFile('/src/Example/UserController.g');
+        $expectedSource = new OriginalFile('/original.source');
 
         return new SourceMap(
             new GeneratedFile('Example/UserController.php'),

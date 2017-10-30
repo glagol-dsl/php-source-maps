@@ -4,6 +4,6 @@
   "file": "Example/UserController.php",
   "version": 3.0,
   "sources": [
-    "/src/Example/UserController.g"
+    "/original.source"
   ]
 }
