@@ -5,6 +5,7 @@ namespace GlagolTest\SourceMap;
 
 use Glagol\SourceMap\File;
 use Glagol\SourceMap\Mapping;
+use Glagol\SourceMap\OriginalFile;
 use PHPUnit\Framework\TestCase;
 
 class MappingTest extends TestCase
@@ -27,10 +28,10 @@ class MappingTest extends TestCase
     }
 
     /**
-     * @return File|\PHPUnit_Framework_MockObject_MockObject
+     * @return OriginalFile|\PHPUnit_Framework_MockObject_MockObject
      */
-    private function fileMock(): File
+    private function fileMock(): OriginalFile
     {
-        return $this->createMock(File::class);
+        return $this->createMock(OriginalFile::class);
     }
 }

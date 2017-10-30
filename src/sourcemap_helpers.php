@@ -9,15 +9,23 @@ use RuntimeException;
 const SOURCE_MAP_REGEX = '@//# sourceMappingURL=(?P<file>.+?\.map)@';
 // @codeCoverageIgnoreEnd
 
-function gdebug_get_source_map_path(string $filePath): ?string
+function load_map_from_generated_source(string $filePath, ?string $basePath = null): ?SourceMapFile
 {
-    $line = gdebug_read_last_line($filePath);
+    $line = read_last_line($filePath);
     preg_match(SOURCE_MAP_REGEX, $line, $matches);
 
-    return array_get($matches, 'file');
+    $path = array_get($matches, 'file');
+
+    if (is_null($path)) {
+        return null;
+    }
+
+    $fullPath = $basePath . '/' . $path;
+
+    return file_exists($fullPath) && !is_dir($fullPath) ? new SourceMapFile($fullPath) : null;
 }
 
-function gdebug_read_last_line(string $filePath): string
+function read_last_line(string $filePath): string
 {
     if (!file_exists($filePath)) {
         throw new RuntimeException("File '{$filePath}' does not exist");

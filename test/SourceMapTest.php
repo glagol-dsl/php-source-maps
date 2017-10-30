@@ -4,25 +4,19 @@ declare(strict_types=1);
 namespace GlagolTest\SourceMap;
 
 use Glagol\SourceMap\File;
+use Glagol\SourceMap\GeneratedFile;
 use Glagol\SourceMap\Mapping;
 use Glagol\SourceMap\MappingCollection;
+use Glagol\SourceMap\OriginalFile;
 use Glagol\SourceMap\SourceMap;
+use Glagol\SourceMap\SourceMapFile;
 use PHPUnit\Framework\TestCase;
 
 class SourceMapTest extends TestCase
 {
-    public function testShouldParseAJsonSourceMap()
-    {
-        $actualSourceMap = SourceMap::createFromJson(file_get_contents(__DIR__ . '/test_source_map.json'));
-
-        $sourceMap = $this->expectedSourceMap();
-
-        self::assertEquals($sourceMap, $actualSourceMap);
-    }
-
     public function testShouldParseAFileSourceMap()
     {
-        $actualSourceMap = SourceMap::createFromFile(__DIR__ . '/test_source_map.json');
+        $actualSourceMap = (new SourceMapFile(__DIR__ . '/test_source_map.json'))->sourceMap();
 
         $sourceMap = $this->expectedSourceMap();
 
@@ -34,10 +28,10 @@ class SourceMapTest extends TestCase
      */
     private function expectedSourceMap(): SourceMap
     {
-        $expectedSource = new File('/src/Example/UserController.g');
+        $expectedSource = new OriginalFile('/src/Example/UserController.g');
 
-        $sourceMap = new SourceMap(
-            new File('Example/UserController.php'),
+        return new SourceMap(
+            new GeneratedFile('Example/UserController.php'),
             new MappingCollection([
                 new Mapping(1, 0, $expectedSource, 1, 0),
                 new Mapping(2, 0, $expectedSource, 1, 0),
@@ -52,6 +46,5 @@ class SourceMapTest extends TestCase
                 new Mapping(17, 27, $expectedSource, 7, 24),
             ])
         );
-        return $sourceMap;
     }
 }

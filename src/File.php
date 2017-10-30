@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Glagol\SourceMap;
 
-class File
+abstract class File
 {
     /**
      * @var string

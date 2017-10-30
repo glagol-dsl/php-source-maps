@@ -16,7 +16,7 @@ class Mapping
     private $generatedColumn;
 
     /**
-     * @var File
+     * @var OriginalFile
      */
     private $originalSource;
 
@@ -38,21 +38,21 @@ class Mapping
     /**
      * @param int $generatedLine
      * @param int $generatedColumn
-     * @param File $originalSource
+     * @param OriginalFile $originalSource
      * @param int $originalLine
      * @param int $originalColumn
      * @param string $name
      */
     public function __construct(
         int $generatedLine, int $generatedColumn,
-        File $originalSource, int $originalLine, int $originalColumn, ?string $name = null)
+        OriginalFile $originalSource, int $originalLine, int $originalColumn, ?string $name = null)
     {
         $this->generatedLine = $generatedLine;
         $this->generatedColumn = $generatedColumn;
         $this->originalSource = $originalSource;
         $this->originalLine = $originalLine;
         $this->originalColumn = $originalColumn;
-        $this->name = $name;
+        $this->name = null === $name ? null : trim($name);
     }
 
     public function isNameEqualTo(string $name): bool
@@ -65,18 +65,39 @@ class Mapping
         return $line === $this->generatedLine;
     }
 
-    public function getOriginalSource(): File
+    /**
+     * @codeCoverageIgnore
+     * @return OriginalFile
+     */
+    public function getOriginalSource(): OriginalFile
     {
         return $this->originalSource;
     }
 
+    /**
+     * @codeCoverageIgnore
+     * @return int
+     */
     public function getOriginalLine(): int
     {
         return $this->originalLine;
     }
 
+    /**
+     * @codeCoverageIgnore
+     * @return int
+     */
     public function getOriginalColumn(): int
     {
         return $this->originalColumn;
+    }
+
+    /**
+     * @codeCoverageIgnore
+     * @return null|string
+     */
+    public function getName(): ?string
+    {
+        return $this->name;
     }
 }
