@@ -14,4 +14,9 @@ abstract class File
     {
         $this->path = $path;
     }
+
+    public function toPath(string $basePath): string
+    {
+        return "{$basePath}/{$this->path}";
+    }
 }
