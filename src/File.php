@@ -15,11 +15,8 @@ abstract class File
         $this->path = $path;
     }
 
-    public function toPath(string $basePath): string
+    public function toPath(): string
     {
-        $basePath = rtrim($basePath, "/\\");
-        $path = ltrim($this->path, "/\\");
-
-        return "{$basePath}/{$path}";
+        return ltrim($this->path, "/\\");
     }
 }

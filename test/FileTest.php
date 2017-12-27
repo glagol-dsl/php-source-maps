@@ -13,6 +13,6 @@ class FileTest extends TestCase
         /** @var File $file */
         $file = $this->getMockForAbstractClass(File::class, ['some/file.php']);
 
-        $this->assertEquals('/home//some/file.php', $file->toPath('/home/'));
+        $this->assertEquals('some/file.php', $file->toPath());
     }
 }
