@@ -2,7 +2,6 @@
   "name": "bulgaria-php/glagol-dsl-php-source-map",
   "description": "PHP library for reading Source Maps v3",
   "minimum-stability": "dev",
-  "prefer-dist": true,
   "license": "GPL-3.0",
   "authors": [
     {
