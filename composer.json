@@ -1,5 +1,5 @@
 {
-  "name": "bulgaria-php/glagol-dsl-php-source-map",
+  "name": "glagol-dsl/php-source-maps",
   "description": "PHP library for reading Source Maps v3",
   "minimum-stability": "dev",
   "license": "GPL-3.0",

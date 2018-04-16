@@ -1,5 +1,5 @@
 # Glagol DSL Source Maps library
-[![CircleCI](https://circleci.com/gh/BulgariaPHP/glagol-dsl-php-source-map.svg?style=svg)](https://circleci.com/gh/BulgariaPHP/glagol-dsl-php-source-map)
+[![CircleCI](https://circleci.com/gh/glagol-dsl/php-source-maps.svg?style=svg)](https://circleci.com/gh/glagol-dsl/php-source-maps)
 
 **Note:** this is a source maps consumer implementation with modifications to its algorithm to satisfy the needs of Glagol DSL
 
